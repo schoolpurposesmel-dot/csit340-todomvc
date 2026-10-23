@@ -30,7 +30,11 @@ function Todos() {
   }
 
   const activeCount = todos.filter((todo) => !todo.completed).length;
-return (
+
+  function handleClearCompleted() {
+  setTodos(todos.filter((todo) => !todo.completed));
+}
+  return (
    <section className="mx-auto max-w-[550px]">
     <h1 className="text-center text-[80px] font-extralight text-[#b83f45]">
        todos
@@ -123,9 +127,14 @@ return (
                   </button>
                 </li>
               </ul>
-              <button type="button" className="cursor-pointer justify-self-end hover:underline">
+              {todos.filter((todo) => todo.completed).length > 0 && (
+              <button type="button" 
+                onClick={handleClearCompleted}
+                className="cursor-pointer justify-self-end hover:underline"
+              >
                 Clear completed
               </button>
+              )}
             </footer>
          </>
         )}
