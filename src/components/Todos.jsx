@@ -29,6 +29,7 @@ function Todos() {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
+  const activeCount = todos.filter((todo) => !todo.completed).length;
 return (
    <section className="mx-auto max-w-[550px]">
     <h1 className="text-center text-[80px] font-extralight text-[#b83f45]">
@@ -94,7 +95,7 @@ return (
 
           <footer className="grid h-10 grid-cols-3 items-center border-t border-[#e6e6e6] px-[15px] text-[15px]">
               <span>
-                <strong className="font-light">1</strong> item left
+                <strong className="font-light">{activeCount}</strong> {activeCount <= 1 ? 'item' : 'items'} left
               </span>
               <ul className="flex justify-center gap-1">
                 <li>
